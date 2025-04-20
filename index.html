@@ -24,58 +24,83 @@
       --text-muted: #cbd5e1;
     }
 
-    *{margin:0;padding:0;box-sizing:border-box;}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body{
-      font-family:'Poppins',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;
-      background:var(--bg-black);color:var(--text);overflow:hidden;position:relative;
+    body {
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-black);
+      color: var(--text);
+      overflow: hidden;
+      position: relative;
+      padding: 1rem;
     }
 
-    /* colourful wave */
-    .wave-layer{position:absolute;inset:-50% 0 0 -50%;width:300%;height:300%;
-      background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='120' viewBox='0 0 240 120'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='0%'><stop offset='0%' stop-color='%236366f1'/><stop offset='33%' stop-color='%2334d399'/><stop offset='66%' stop-color='%23facc15'/><stop offset='100%' stop-color='%23ec4899'/></linearGradient></defs><path d='M0 60 Q60 0 120 60 T240 60 V120 H0 Z' fill='url(%23grad)' opacity='0.08'/></svg>");
-      background-size:480px 240px;background-repeat:repeat-x;
-      animation:waveSlide 6s linear infinite;pointer-events:none;}
-    @keyframes waveSlide{to{transform:translateX(-240px);}}
-
-    /* soft colourful glow */
-    .glow-layer{position:absolute;inset:-25%;pointer-events:none;
-      background:
-        radial-gradient(circle at 20% 120%, rgba(236,72,153,0.18) 0%, transparent 60%),
-        radial-gradient(circle at 80% -20%, rgba(34,211,238,0.15) 0%, transparent 65%),
-        radial-gradient(circle at 50% 50%, rgba(99,102,241,0.12) 0%, transparent 60%);
-      animation:drift 5000000s linear infinite alternate;
+    /* background wave */
+    .wave-layer {
+      position: absolute;
+      inset: -50% 0 0 -50%;
+      width: 300%;
+      height: 300%;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='120' viewBox='0 0 240 120'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='0%'><stop offset='0%' stop-color='%236366f1'/><stop offset='33%' stop-color='%2334d399'/><stop offset='66%' stop-color='%23facc15'/><stop offset='100%' stop-color='%23ec4899'/></linearGradient></defs><path d='M0 60 Q60 0 120 60 T240 60 V120 H0 Z' fill='url(%23grad)' opacity='0.08'/></svg>");
+      background-size: 480px 240px;
+      background-repeat: repeat-x;
+      animation: wave 6s linear infinite;
+      pointer-events: none;
     }
-    @keyframes drift{0%{transform:translateY(0);}100%{transform:translateY(-35%);}}
+    @keyframes wave { to { transform: translateX(-240px); } }
 
-    .card{background:var(--card);border:1px solid var(--card-border);padding:3rem 3.5rem;border-radius:1.5rem;
-      box-shadow:0 16px 32px rgba(0,0,0,0.55);max-width:720px;width:92%;text-align:center;backdrop-filter:blur(6px);
-      position:relative;z-index:1;}
-    h1{font-size:3rem;font-weight:700;margin-bottom:1.25rem;}
+    /* glow */
+    .glow-layer {
+      position: absolute;
+      inset: -25%;
+      background: radial-gradient(circle at 20% 120%, rgba(236,72,153,0.18) 0%, transparent 60%),
+                  radial-gradient(circle at 80% -20%, rgba(34,211,238,0.15) 0%, transparent 65%),
+                  radial-gradient(circle at 50% 50%, rgba(99,102,241,0.12) 0%, transparent 60%);
+      animation: drift 50000000s linear infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes drift { 0% {transform: translateY(0);} 100% {transform: translateY(-35%);} }
 
-    .bio-section{text-align:left;}
-    p.bio{font-size:1.125rem;font-weight:300;line-height:1.8;margin-bottom:1rem;color:var(--text-muted);} 
-    .bio-divider{border:none;border-top:1px solid var(--card-border);margin:1rem 0 1.5rem;}
+    /* card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      padding: 2.5rem 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.55);
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      position: relative;
+      z-index: 1;
+    }
+    h1 { font-size: 2.75rem; font-weight: 700; margin-bottom: 1.25rem; }
 
-    .socials{display:flex;flex-wrap:wrap;justify-content:center;gap:0.9rem;margin-bottom:2.25rem;}
-    .socials a{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-size:1.3rem;transition:transform 0.25s,box-shadow 0.25s;}
-    .socials a:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 6px 18px rgba(255,255,255,0.25);}  
+    /* bio */
+    .bio-section { text-align: left; }
+    .bio { font-size: 1.125rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1rem; }
+    .bio-divider { border: none; border-top: 1px solid var(--card-border); margin: 1rem 0 1.5rem; }
 
-    /* brand colors */
-    .email{background:#6b7280;}
-    .github{background:#181717;}
-    .linkedin{background:#0a66c2;}
-    .twitter{background:#1d9bf0;}
-    .leetcode{background:#f89f1b;}
-    .instagram{background:#d6249f;}
-    .steam{background:#171a21;}
-    .hackerrank{background:#2ec866;}
-    .spotify{background:#1db954;}
+    /* socials */
+    .socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.9rem; margin-bottom: 2rem; }
+    .socials a { width: 46px; height: 46px; display:flex; align-items:center; justify-content:center; border-radius:50%; color:#fff; font-size:1.3rem; transition: transform .25s, box-shadow .25s; }
+    .socials a:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 6px 18px rgba(255,255,255,0.25); }
 
-    .btn-cv{display:inline-block;padding:0.9rem 2rem;border-radius:0.9rem;background:var(--primary);color:#fff;font-weight:500;text-decoration:none;transition:transform 0.25s,box-shadow 0.25s;}
-    .btn-cv:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(99,102,241,0.35);}  
+    /* brand colours */
+    .email{background:#6b7280;}.github{background:#181717;}.linkedin{background:#0a66c2;}.twitter{background:#1d9bf0;}.leetcode{background:#f89f1b;}.instagram{background:#d6249f;}.steam{background:#171a21;}.hackerrank{background:#2ec866;}.spotify{background:#1db954;}
 
-    @media(max-width:550px){.card{padding:2.25rem 1.75rem;}h1{font-size:2.25rem;}p.bio{font-size:1rem;}.socials{gap:0.75rem;}}
+    /* button */
+    .btn-cv { display:inline-block; padding:0.9rem 2rem; border-radius:0.9rem; background:var(--primary); color:#fff; font-weight:500; text-decoration:none; transition: transform .25s, box-shadow .25s; }
+    .btn-cv:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(99,102,241,.35); }
+
+    /* responsive */
+    @media(max-width:768px){ .card{padding:2rem 2rem;} h1{font-size:2.25rem;} .bio{font-size:1rem;} .socials a{width:42px; height:42px; font-size:1.2rem;} }
+    @media(max-width:480px){ .card{padding:1.75rem 1.5rem;} h1{font-size:1.85rem;} .bio{font-size:.95rem;} .socials{gap:.6rem;} .socials a{width:38px;height:38px;font-size:1rem;} .btn-cv{width:100%;padding:.8rem 0;} }
   </style>
 </head>
 <body>
@@ -88,19 +113,19 @@
     <div class="bio-section">
       <p class="bio">I am a first year M.Sc. student in Applied Mathematics at SFU – Vancouver - specialising in computer algebra.</p>
       <hr class="bio-divider">
-      <p class="bio">My research interests include symbolic computation - randomized algorithms and parallel computing.</p>
+      <p class="bio">Some of my research interests include symbolic computation - randomized algorithms and parallel computing.</p>
       <hr class="bio-divider">
-      <p class="bio">When AFK - I enjoy working out - playing MMO games and catching up with friends over a well brewed coffee.</p>
+      <p class="bio">When AFK - I enjoy working out - hiking - playing MMO games, and catching up with friends over a nice cup of coffee.</p>
       <hr class="bio-divider">
     </div>
 
     <div class="socials">
       <a href="mailto:sokhimantej99@gmail.com" aria-label="Email" class="email"><i class="fas fa-envelope"></i></a>
       <a href="https://github.com/msokhi99" aria-label="GitHub" class="github"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/msokhi99" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.linkedin.com/in/yourusername" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
     </div>
 
-    <a href="resume.pdf" class="btn-cv" target="_blank" rel="noopener">Résumé</a>
+    <a href="mantej_resume.pdf" class="btn-cv" target="_blank" rel="noopener">Résumé</a>
   </main>
 </body>
 </html>
